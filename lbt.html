@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	img{
+		width:640px;
+		height:480px;
+	}
+	#div{
+		width:640px;
+		height:480px;
+		position:relative;
+	}
+	#div ol{
+		position:absolute;
+		width:240px;
+		height:20px;
+		bottom:20px;
+		left:170px;
+	}
+	#div ol li{
+		float:left;
+		width:20px;
+		height:20px;
+		background-color:#ffffff;
+		margin-right:20px;
+		list-style:none;
+		line-height:20px;
+		text-align:center;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+	var img=document.getElementsByTagName('img')[0];
+	var sli=document.getElementsByTagName('li');
+	var num=1;
+	var tim=null;
+	tim=setInterval(xx,1000);
+	for(var i=0;i<sli.length;i++){
+		sli[i].index=i;
+		sli[i].onmouseover=xx;
+		function xx(){
+			num++
+			if(num>sli.length){
+				num=1
+			}
+			img.src="images/"+num+".jpg";
+			sli[this.index].style.background="red";
+			clearInterval(tim);
+		}
+		sli[i].onmouseout=function(){
+			sli[this.index].style.background="";
+			tim=setInterval(xx,1000);
+		}
+	}
+	
+}
+	</script>
+</head>
+<body>
+	<div id="div">
+		<img src="images/1.jpg" alt="">
+		<ol>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ol>
+	</div>
+</body>
+</html>
